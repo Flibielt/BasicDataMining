@@ -1,0 +1,5 @@
+https://www.kaggle.com/lava18/google-play-store-apps
+
+https://www.kaggle.com/gregorut/videogamesales?select=vgsales.csv
+
+https://www.kaggle.com/neuromusic/avocado-prices
