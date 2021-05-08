@@ -49,7 +49,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
-      <operator activated="true" class="subprocess" compatibility="9.9.000" expanded="true" height="82" name="Clean values" width="90" x="179" y="34">
+      <operator activated="true" class="subprocess" compatibility="9.9.000" expanded="true" height="103" name="Clean values" width="90" x="179" y="34">
         <process expanded="true">
           <operator activated="true" class="replace" compatibility="9.9.000" expanded="true" height="82" name="Replace N/A" width="90" x="313" y="34">
             <parameter key="attribute_filter_type" value="single"/>
@@ -92,10 +92,15 @@
           <portSpacing port="source_in 2" spacing="0"/>
           <portSpacing port="sink_out 1" spacing="0"/>
           <portSpacing port="sink_out 2" spacing="0"/>
+          <portSpacing port="sink_out 3" spacing="0"/>
         </process>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.9.000" expanded="true" height="68" name="Store" width="90" x="313" y="136">
+        <parameter key="repository_entry" value="//Local Repository/data/vgsales"/>
       </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Clean values" to_port="in 1"/>
       <connect from_op="Clean values" from_port="out 1" to_port="result 1"/>
+      <connect from_op="Clean values" from_port="out 2" to_op="Store" to_port="input"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
