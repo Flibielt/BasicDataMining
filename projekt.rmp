@@ -65,10 +65,90 @@
       <operator activated="true" class="store" compatibility="9.9.000" expanded="true" height="68" name="Store" width="90" x="447" y="85">
         <parameter key="repository_entry" value="//Local Repository/data/vgsales"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="9.9.000" expanded="true" height="68" name="Retrieve" width="90" x="45" y="238">
-        <parameter key="repository_entry" value="//Local Repository/data/vgsales_2"/>
+      <operator activated="true" class="retrieve" compatibility="9.9.000" expanded="true" height="68" name="Retrieve" width="90" x="45" y="952">
+        <parameter key="repository_entry" value="//Local Repository/data/vgsales"/>
       </operator>
-      <operator activated="true" class="normalize" compatibility="9.9.000" expanded="true" height="103" name="Normalize" width="90" x="179" y="238">
+      <operator activated="true" class="select_attributes" compatibility="9.9.000" expanded="true" height="82" name="Select Attributes (2)" width="90" x="179" y="952">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="EU_Sales|Global_Sales|JP_Sales|NA_Sales|Other_Sales|Year"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="145" name="Multiply (2)" width="90" x="313" y="952"/>
+      <operator activated="true" class="principal_component_analysis" compatibility="9.9.000" expanded="true" height="103" name="PCA" width="90" x="514" y="1156">
+        <parameter key="dimensionality_reduction" value="keep variance"/>
+        <parameter key="variance_threshold" value="0.95"/>
+        <parameter key="number_of_components" value="1"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="124" name="Multiply (3)" width="90" x="715" y="1054"/>
+      <operator activated="true" class="sample" compatibility="9.9.000" expanded="true" height="82" name="Sample (2)" width="90" x="514" y="1054">
+        <parameter key="sample" value="absolute"/>
+        <parameter key="balance_data" value="false"/>
+        <parameter key="sample_size" value="100"/>
+        <parameter key="sample_ratio" value="0.1"/>
+        <parameter key="sample_probability" value="0.1"/>
+        <list key="sample_size_per_class"/>
+        <list key="sample_ratio_per_class"/>
+        <list key="sample_probability_per_class"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="detect_outlier_lof" compatibility="9.9.000" expanded="true" height="82" name="Detect Outlier (LOF)" width="90" x="715" y="1054">
+        <parameter key="minimal_points_lower_bound" value="10"/>
+        <parameter key="minimal_points_upper_bound" value="20"/>
+        <parameter key="distance_function" value="euclidian distance"/>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model (3)" width="90" x="916" y="1156">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="detect_outlier_densities" compatibility="9.9.000" expanded="true" height="82" name="Detect Outlier (Densities)" width="90" x="514" y="952">
+        <parameter key="distance" value="12.0"/>
+        <parameter key="proportion" value="0.9"/>
+        <parameter key="distance_function" value="euclidian distance"/>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model (2)" width="90" x="916" y="1003">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="sample" compatibility="9.9.000" expanded="true" height="82" name="Sample" width="90" x="514" y="850">
+        <parameter key="sample" value="absolute"/>
+        <parameter key="balance_data" value="false"/>
+        <parameter key="sample_size" value="100"/>
+        <parameter key="sample_ratio" value="0.1"/>
+        <parameter key="sample_probability" value="0.1"/>
+        <list key="sample_size_per_class"/>
+        <list key="sample_ratio_per_class"/>
+        <list key="sample_probability_per_class"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="detect_outlier_distances" compatibility="9.9.000" expanded="true" height="82" name="Detect Outlier (Distances)" width="90" x="715" y="850">
+        <parameter key="number_of_neighbors" value="10"/>
+        <parameter key="number_of_outliers" value="10"/>
+        <parameter key="distance_function" value="euclidian distance"/>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model" width="90" x="916" y="850">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="9.9.000" expanded="true" height="68" name="Retrieve (2)" width="90" x="45" y="340">
+        <parameter key="repository_entry" value="//Local Repository/data/vgsales"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.9.000" expanded="true" height="82" name="Set Role" width="90" x="179" y="340">
+        <parameter key="attribute_name" value="Genre"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="true" class="normalize" compatibility="9.9.000" expanded="true" height="103" name="Normalize" width="90" x="313" y="340">
         <parameter key="return_preprocessing_model" value="false"/>
         <parameter key="create_view" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
@@ -88,37 +168,76 @@
         <parameter key="max" value="1.0"/>
         <parameter key="allow_negative_values" value="false"/>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="9.9.000" expanded="true" height="82" name="Select Attributes" width="90" x="313" y="238">
-        <parameter key="attribute_filter_type" value="subset"/>
-        <parameter key="attribute" value=""/>
-        <parameter key="attributes" value="EU_Sales|Global_Sales|NA_Sales|Platform|Year|Genre|JP_Sales|Other_Sales"/>
-        <parameter key="use_except_expression" value="false"/>
-        <parameter key="value_type" value="attribute_value"/>
-        <parameter key="use_value_type_exception" value="false"/>
-        <parameter key="except_value_type" value="time"/>
-        <parameter key="block_type" value="attribute_block"/>
-        <parameter key="use_block_type_exception" value="false"/>
-        <parameter key="except_block_type" value="value_matrix_row_start"/>
-        <parameter key="invert_selection" value="false"/>
-        <parameter key="include_special_attributes" value="false"/>
-      </operator>
-      <operator activated="true" class="set_role" compatibility="9.9.000" expanded="true" height="82" name="Set Role" width="90" x="447" y="238">
-        <parameter key="attribute_name" value="Platform"/>
-        <parameter key="target_role" value="label"/>
-        <list key="set_additional_roles"/>
-      </operator>
-      <operator activated="true" class="split_data" compatibility="9.9.000" expanded="true" height="103" name="Split Data" width="90" x="581" y="238">
+      <operator activated="true" class="split_data" compatibility="9.9.000" expanded="true" height="103" name="Split Data" width="90" x="447" y="340">
         <enumeration key="partitions">
-          <parameter key="ratio" value="0.7"/>
-          <parameter key="ratio" value="0.3"/>
+          <parameter key="ratio" value="0.8"/>
+          <parameter key="ratio" value="0.2"/>
         </enumeration>
         <parameter key="sampling_type" value="automatic"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
       </operator>
-      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="103" name="Multiply Test" width="90" x="715" y="340"/>
-      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="103" name="Multiply Train" width="90" x="715" y="187"/>
-      <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.9.000" expanded="true" height="103" name="Decision Tree" width="90" x="849" y="136">
+      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="124" name="Multiply Test" width="90" x="581" y="493"/>
+      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="124" name="Multiply Train" width="90" x="581" y="238"/>
+      <operator activated="true" class="adaboost" compatibility="9.9.000" expanded="true" height="82" name="AdaBoost" width="90" x="715" y="391">
+        <parameter key="iterations" value="10"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.9.000" expanded="true" height="103" name="Decision Tree (3)" width="90" x="313" y="34">
+            <parameter key="criterion" value="gini_index"/>
+            <parameter key="maximal_depth" value="5"/>
+            <parameter key="apply_pruning" value="true"/>
+            <parameter key="confidence" value="0.1"/>
+            <parameter key="apply_prepruning" value="true"/>
+            <parameter key="minimal_gain" value="0.01"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+          </operator>
+          <connect from_port="training set" to_op="Decision Tree (3)" to_port="training set"/>
+          <connect from_op="Decision Tree (3)" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model Boost" width="90" x="849" y="391">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="performance" compatibility="9.9.000" expanded="true" height="82" name="Performance Boosting" width="90" x="1050" y="391">
+        <parameter key="use_example_weights" value="true"/>
+      </operator>
+      <operator activated="true" class="bagging" compatibility="9.9.000" expanded="true" height="82" name="Bagging" width="90" x="715" y="238">
+        <parameter key="sample_ratio" value="0.9"/>
+        <parameter key="iterations" value="10"/>
+        <parameter key="average_confidences" value="true"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.9.000" expanded="true" height="103" name="Decision Tree (2)" width="90" x="380" y="34">
+            <parameter key="criterion" value="gini_index"/>
+            <parameter key="maximal_depth" value="5"/>
+            <parameter key="apply_pruning" value="true"/>
+            <parameter key="confidence" value="0.1"/>
+            <parameter key="apply_prepruning" value="true"/>
+            <parameter key="minimal_gain" value="0.01"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+          </operator>
+          <connect from_port="training set" to_op="Decision Tree (2)" to_port="training set"/>
+          <connect from_op="Decision Tree (2)" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model Baging" width="90" x="849" y="238">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="performance" compatibility="9.9.000" expanded="true" height="82" name="Performance Bagginng" width="90" x="1050" y="238">
+        <parameter key="use_example_weights" value="true"/>
+      </operator>
+      <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.9.000" expanded="true" height="103" name="Decision Tree" width="90" x="715" y="595">
         <parameter key="criterion" value="gain_ratio"/>
         <parameter key="maximal_depth" value="10"/>
         <parameter key="apply_pruning" value="true"/>
@@ -129,50 +248,55 @@
         <parameter key="minimal_size_for_split" value="4"/>
         <parameter key="number_of_prepruning_alternatives" value="3"/>
       </operator>
-      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model Train" width="90" x="983" y="136">
+      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model Tree" width="90" x="849" y="595">
         <list key="application_parameters"/>
         <parameter key="create_view" value="false"/>
       </operator>
-      <operator activated="true" class="apply_model" compatibility="9.9.000" expanded="true" height="82" name="Apply Model Test" width="90" x="849" y="289">
-        <list key="application_parameters"/>
-        <parameter key="create_view" value="false"/>
-      </operator>
-      <operator activated="true" class="multiply" compatibility="9.9.000" expanded="true" height="103" name="Multiply Model" width="90" x="983" y="289"/>
-      <operator activated="true" class="model_simulator:explain_predictions" compatibility="9.9.000" expanded="true" height="124" name="Explain Predictions" width="90" x="1117" y="340">
-        <parameter key="maximal explaining attributes" value="3"/>
-        <parameter key="apply maximum to importances output" value="false"/>
-        <parameter key="local sample size" value="500"/>
-        <parameter key="only create predictions" value="false"/>
-        <parameter key="normalize global weights" value="false"/>
-        <parameter key="sort_weights" value="true"/>
-        <parameter key="sort_direction" value="descending"/>
+      <operator activated="true" class="performance" compatibility="9.9.000" expanded="true" height="82" name="Performance Tree" width="90" x="1050" y="595">
+        <parameter key="use_example_weights" value="true"/>
       </operator>
       <connect from_op="Read URL" from_port="output" to_op="Clean values" to_port="in 1"/>
       <connect from_op="Clean values" from_port="out 1" to_op="Multiply" to_port="input"/>
       <connect from_op="Multiply" from_port="output 1" to_port="result 1"/>
       <connect from_op="Multiply" from_port="output 2" to_op="Store" to_port="input"/>
-      <connect from_op="Retrieve" from_port="output" to_op="Normalize" to_port="example set input"/>
-      <connect from_op="Normalize" from_port="example set output" to_op="Select Attributes" to_port="example set input"/>
-      <connect from_op="Select Attributes" from_port="example set output" to_op="Set Role" to_port="example set input"/>
-      <connect from_op="Set Role" from_port="example set output" to_op="Split Data" to_port="example set"/>
+      <connect from_op="Retrieve" from_port="output" to_op="Select Attributes (2)" to_port="example set input"/>
+      <connect from_op="Select Attributes (2)" from_port="example set output" to_op="Multiply (2)" to_port="input"/>
+      <connect from_op="Multiply (2)" from_port="output 1" to_op="Sample" to_port="example set input"/>
+      <connect from_op="Multiply (2)" from_port="output 2" to_op="Detect Outlier (Densities)" to_port="example set input"/>
+      <connect from_op="Multiply (2)" from_port="output 3" to_op="Sample (2)" to_port="example set input"/>
+      <connect from_op="Multiply (2)" from_port="output 4" to_op="PCA" to_port="example set input"/>
+      <connect from_op="PCA" from_port="preprocessing model" to_op="Multiply (3)" to_port="input"/>
+      <connect from_op="Multiply (3)" from_port="output 1" to_op="Apply Model" to_port="model"/>
+      <connect from_op="Multiply (3)" from_port="output 2" to_op="Apply Model (2)" to_port="model"/>
+      <connect from_op="Multiply (3)" from_port="output 3" to_op="Apply Model (3)" to_port="model"/>
+      <connect from_op="Sample (2)" from_port="example set output" to_op="Detect Outlier (LOF)" to_port="example set input"/>
+      <connect from_op="Detect Outlier (LOF)" from_port="example set output" to_op="Apply Model (3)" to_port="unlabelled data"/>
+      <connect from_op="Detect Outlier (Densities)" from_port="example set output" to_op="Apply Model (2)" to_port="unlabelled data"/>
+      <connect from_op="Sample" from_port="example set output" to_op="Detect Outlier (Distances)" to_port="example set input"/>
+      <connect from_op="Detect Outlier (Distances)" from_port="example set output" to_op="Apply Model" to_port="unlabelled data"/>
+      <connect from_op="Retrieve (2)" from_port="output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Normalize" to_port="example set input"/>
+      <connect from_op="Normalize" from_port="example set output" to_op="Split Data" to_port="example set"/>
       <connect from_op="Split Data" from_port="partition 1" to_op="Multiply Train" to_port="input"/>
       <connect from_op="Split Data" from_port="partition 2" to_op="Multiply Test" to_port="input"/>
-      <connect from_op="Multiply Test" from_port="output 1" to_op="Apply Model Test" to_port="unlabelled data"/>
-      <connect from_op="Multiply Test" from_port="output 2" to_op="Explain Predictions" to_port="test data"/>
-      <connect from_op="Multiply Train" from_port="output 1" to_op="Decision Tree" to_port="training set"/>
-      <connect from_op="Multiply Train" from_port="output 2" to_op="Explain Predictions" to_port="training data"/>
-      <connect from_op="Decision Tree" from_port="model" to_op="Apply Model Train" to_port="model"/>
-      <connect from_op="Decision Tree" from_port="exampleSet" to_op="Apply Model Train" to_port="unlabelled data"/>
-      <connect from_op="Apply Model Train" from_port="labelled data" to_port="result 2"/>
-      <connect from_op="Apply Model Train" from_port="model" to_op="Apply Model Test" to_port="model"/>
-      <connect from_op="Apply Model Test" from_port="labelled data" to_port="result 3"/>
-      <connect from_op="Apply Model Test" from_port="model" to_op="Multiply Model" to_port="input"/>
-      <connect from_op="Multiply Model" from_port="output 1" to_port="result 4"/>
-      <connect from_op="Multiply Model" from_port="output 2" to_op="Explain Predictions" to_port="model"/>
-      <connect from_op="Explain Predictions" from_port="visualization output" to_port="result 5"/>
-      <connect from_op="Explain Predictions" from_port="example set output" to_port="result 6"/>
-      <connect from_op="Explain Predictions" from_port="importances output" to_port="result 7"/>
-      <connect from_op="Explain Predictions" from_port="global weights output" to_port="result 8"/>
+      <connect from_op="Multiply Test" from_port="output 1" to_op="Apply Model Baging" to_port="unlabelled data"/>
+      <connect from_op="Multiply Test" from_port="output 2" to_op="Apply Model Boost" to_port="unlabelled data"/>
+      <connect from_op="Multiply Test" from_port="output 3" to_op="Apply Model Tree" to_port="unlabelled data"/>
+      <connect from_op="Multiply Train" from_port="output 1" to_op="Bagging" to_port="training set"/>
+      <connect from_op="Multiply Train" from_port="output 2" to_op="AdaBoost" to_port="training set"/>
+      <connect from_op="Multiply Train" from_port="output 3" to_op="Decision Tree" to_port="training set"/>
+      <connect from_op="AdaBoost" from_port="model" to_op="Apply Model Boost" to_port="model"/>
+      <connect from_op="Apply Model Boost" from_port="labelled data" to_op="Performance Boosting" to_port="labelled data"/>
+      <connect from_op="Apply Model Boost" from_port="model" to_port="result 5"/>
+      <connect from_op="Performance Boosting" from_port="performance" to_port="result 4"/>
+      <connect from_op="Bagging" from_port="model" to_op="Apply Model Baging" to_port="model"/>
+      <connect from_op="Apply Model Baging" from_port="labelled data" to_op="Performance Bagginng" to_port="labelled data"/>
+      <connect from_op="Apply Model Baging" from_port="model" to_port="result 3"/>
+      <connect from_op="Performance Bagginng" from_port="performance" to_port="result 2"/>
+      <connect from_op="Decision Tree" from_port="model" to_op="Apply Model Tree" to_port="model"/>
+      <connect from_op="Apply Model Tree" from_port="labelled data" to_op="Performance Tree" to_port="labelled data"/>
+      <connect from_op="Apply Model Tree" from_port="model" to_port="result 7"/>
+      <connect from_op="Performance Tree" from_port="performance" to_port="result 6"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -182,7 +306,9 @@
       <portSpacing port="sink_result 6" spacing="0"/>
       <portSpacing port="sink_result 7" spacing="0"/>
       <portSpacing port="sink_result 8" spacing="0"/>
-      <portSpacing port="sink_result 9" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="105" resized="false" width="180" x="34" y="572">SVM</description>
+      <description align="center" color="yellow" colored="false" height="112" resized="true" width="376" x="53" y="176">Get the data from the web&lt;br/&gt;Source: https://www.kaggle.com/gregorut/videogamesales&lt;br&gt;</description>
+      <description align="center" color="yellow" colored="false" height="104" resized="false" width="180" x="60" y="1081">Rendelleness&amp;#233;g keres&amp;#233;s&lt;br/&gt;</description>
     </process>
   </operator>
 </process>
